@@ -35,6 +35,7 @@ switch (userCommand) {
 }
 
 //function for concert
+var artist;
 function myBand() {
   var URL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
   request(URL, function (error, response, info) {
