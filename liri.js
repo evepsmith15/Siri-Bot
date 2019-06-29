@@ -1,12 +1,12 @@
-require("dotenv").config(); //require npm to keys
+var dotenv = require("dotenv").config(".env"); //require npm to keys
 
 var keys = require("./keys.js"); //require to get key.js
 var request = require("request");
 var moment = require("moment"); //this is used forfinding band info only
-var spotify = new Spotify(keys.spotify)
+var Spotify = require("node-spotify-api");
+var spotify = new Spotify(keys.spotify);
 //id: <29d98020a081474fa046ba5bb6c35689>,
 //secret: <8a5e36dc39af4b54a0af6c63f5d18fed> 
-
 var omdbKey = keys.omdb.api_key;
 var fs = require('fs'); //file system 
 var userCommand = process.argv[2]; //user input
@@ -14,7 +14,7 @@ var parameterCommand = process.argv[3]; //input parameter
 
 //this commands allows you to pick the command you want
 switch (userCommand) {
-  case ('consert-this'):
+  case ('concert-this'):
     myBand();
     break;
   case ('spotify-this-song'):
@@ -35,8 +35,8 @@ switch (userCommand) {
 }
 
 //function for concert
-var artist;
 function myBand() {
+  var artist = process.argv[3];
   var URL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
   request(URL, function (error, response, info) {
         if (!error && response.statusCode === 100) {
