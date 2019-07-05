@@ -16,7 +16,6 @@ V. Install the node modules.
 VI. Make sure you type npm dotenv for the program to be able to grab the require and run the code. 
 VII. You should be able to node run liri when all the requirements are met. 
 
-
 Technology used: 
 Visual Studio Code:
 --> Javascript 
